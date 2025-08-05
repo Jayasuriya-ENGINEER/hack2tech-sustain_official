@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Slideshow Gallery</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .gallery-container {
+      max-width: calc(100% - 100px);
+      margin: 50px auto;
+      height: 500px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .gallery-image.active {
+      opacity: 1;
+    }
+
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      background: rgba(0, 0, 0, 0.4);
+      color: white;
+      padding: 10px 15px;
+      cursor: pointer;
+      z-index: 1000;
+      user-select: none;
+      border-radius: 50%;
+    }
+
+    .nav-left {
+      left: 10px;
+    }
+
+    .nav-right {
+      right: 10px;
+    }
+
+    .nav-arrow:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="gallery-container">
+    <!-- Images -->
+    <img src="assets/img/gallery/1.png" class="gallery-image active" alt="Image 1">
+    <img src="assets/img/gallery/1.png" class="gallery-image" alt="Image 2">
+    <img src="assets/img/gallery/2.png" class="gallery-image" alt="Image 3">
+    <img src="assets/img/gallery/1.png" class="gallery-image" alt="Image 4">
+
+    <!-- Arrows -->
+    <div class="nav-arrow nav-left" onclick="prevSlide()">&#10094;</div>
+    <div class="nav-arrow nav-right" onclick="nextSlide()">&#10095;</div>
+  </div>
+</div>
+
+<script>
+  const images = document.querySelectorAll('.gallery-image');
+  let current = 0;
+  let interval = setInterval(nextSlide, 5000); // auto slide every 5 sec
+
+  function showSlide(index) {
+    images.forEach(img => img.classList.remove('active'));
+    images[index].classList.add('active');
+  }
+
+  function nextSlide() {
+    current = (current + 1) % images.length;
+    showSlide(current);
+  }
+
+  function prevSlide() {
+    current = (current - 1 + images.length) % images.length;
+    showSlide(current);
+  }
+</script>
+
+</body>
+</html>
