@@ -1066,6 +1066,12 @@ a {
   z-index: 2;
   max-width: 900px;
   margin: 0 auto;
+
+}
+
+.title-line {
+      margin-left: 10px !important;
+  margin-right: 10px !important;
 }
 
 .hero-title {
@@ -1075,6 +1081,9 @@ a {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-top: 70px !important;
+  margin-left: 10px !important;
+  margin-right: 10px !important;
 }
 
 .title-line.accent {
@@ -1159,9 +1168,10 @@ a {
 .hero-buttons {
   display: flex;
   gap: var(--space-md);
-  justify-content: center;
+  justify-content: space-evenly !important;
   flex-wrap: wrap;
   margin-top: var(--space-xl);
+  margin-bottom: var(--space-2xl);
 }
 
 .btn {
